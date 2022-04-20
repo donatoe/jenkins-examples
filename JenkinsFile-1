@@ -1,0 +1,59 @@
+pipeline {
+    agent {
+      docker { image 'python:3.9.12-bullseye' } 
+    }
+ 
+    stages {
+        stage('Prep') {
+            steps {
+                echo 'Prep stage'
+                sh 'python --version'
+            }
+        }
+        stage ('Run tests in parallel') {
+            parallel {
+                stage('Hello There 1') {
+                    steps {
+                        echo 'Hello There 1'
+                        sh 'echo `date`'
+                        sh 'sleep 8'
+                        sh 'echo `date`'
+                    }
+                }
+                stage('Hello There 2') {
+                    steps {
+                        echo 'Hello There 2'
+                        sh 'echo `date`'
+                        sh 'sleep 5'
+                        sh 'echo `date`'
+                    }
+                }
+                stage('Hello There 3') {
+                    steps {
+                        echo 'Hello There 3'
+                        sh 'echo `date`'
+                        sh 'sleep 6'
+                        sh 'echo `date`'
+                    }
+                }
+                stage('Hello There 4') {
+                    steps {
+                        echo 'Hello There 4'
+                        sh 'echo `date`'
+                        sh 'sleep 7'
+                        sh 'echo `date`'
+                    }
+                }
+                stage('Hello There 5') {
+                    steps {
+                        echo 'Hello There 5'
+                        sh 'echo `date`'
+                        sh 'sleep 8'
+                        sh 'echo `date`'
+                    }
+                }
+            }
+        }
+    } 
+
+}
