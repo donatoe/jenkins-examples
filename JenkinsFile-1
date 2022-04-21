@@ -8,6 +8,7 @@ pipeline {
             steps {
                 echo 'Prep stage'
                 sh 'python --version'
+                sh 'uname -a'
             }
         }
         stage ('Run tests in parallel') {
