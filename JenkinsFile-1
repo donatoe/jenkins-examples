@@ -46,9 +46,6 @@ pipeline {
                     }
                 }
                 stage('Hello There 5') {
-                    agent {
-                        docker { image 'perl:5.3.41-bullseye' } 
-                    }
                     steps {
                         echo 'Hello There 5'
                         sh 'echo `date`'
